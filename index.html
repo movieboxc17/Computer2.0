@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Computer Simulator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: white; /* Set text color to white */
+    }
+    #loginContainer, #simulatorContainer {
+      display: none;
+    }
+    /* Style for buttons */
+    button {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id="loginContainer">
+  <h2>Login</h2>
+  <form id="loginForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+    <button type="button" id="loginButton">Login</button>
+  </form>
+</div>
+
+<div id="simulatorContainer">
+  <h2>Computer Simulator</h2>
+  <button id="startButton">Start</button>
+  <div id="biosScreen" style="display:none;">
+    <h3>BIOS</h3>
+    <p>Select boot drive:</p>
+    <select id="bootDrive">
+      <option value="drive1">Drive 1</option>
+      <option value="drive2">Drive 2</option>
+    </select>
+    <button id="bootButton">Boot</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById("loginButton").addEventListener("click", function() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    if (username === "login" && password === "123") {
+      document.getElementById("loginContainer").style.display = "none";
+      document.getElementById("simulatorContainer").style.display = "block";
+    } else {
+      alert("Invalid credentials. Please try again.");
+    }
+  });
+
+  document.getElementById("startButton").addEventListener("click", function() {
+    document.getElementById("simulatorContainer").style.display = "none";
+    document.getElementById("biosScreen").style.display = "block";
+  });
+
+  document.getElementById("bootButton").addEventListener("click", function() {
+    var selectedDrive = document.getElementById("bootDrive").value;
+    alert("Booting from " + selectedDrive);
+    // You can add more simulation logic here
+  });
+</script>
+
+</body>
+</html>
